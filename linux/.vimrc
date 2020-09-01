@@ -34,6 +34,8 @@ nmap <Leader>WQ :wa<CR>:q<CR>
 " 不做任何保存，直接退出 vim
 nmap <Leader>Q :qa!<CR>
 
+
+
 " 设置快捷键遍历子窗口
 " 依次遍历
 nnoremap nw <C-W><C-W>
@@ -65,6 +67,10 @@ set ignorecase
 
 " 关闭兼容模式
 set nocompatible
+
+" 设置退格键
+set backspace=indent,eol,start
+
 
 " vim 自身命令行模式智能补全
 set wildmenu
@@ -104,6 +110,7 @@ Plug 'suan/vim-instant-markdown'
 Plug 'lilydjwg/fcitx.vim'
 Plug 'rhysd/vim-clang-format'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 " 插件列表结束
 call plug#end()
 " <<<<
@@ -533,7 +540,8 @@ function! Formatonsave()
     endfunction
     autocmd BufWritePre *.h,*.cc,*.cpp call Formatonsave()
 
-
+" leaderf插件配置
+let g:Lf_ShortcutF ='<C-P>'
 
 " Coc 插件配置
 nmap <silent> gd <Plug>(coc-definition)
