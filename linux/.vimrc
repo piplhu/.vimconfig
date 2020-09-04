@@ -85,6 +85,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'altercation/vim-colors-solarized'
 Plug 'tomasr/molokai'
 Plug 'vim-scripts/phd'
+Plug 'vim-scripts/DoxygenToolkit.vim' 
 Plug 'Lokaltog/vim-powerline'
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'nathanaelkane/vim-indent-guides'
@@ -548,3 +549,11 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+
+
+" DoxygenToolkit 注释配置
+let g:DoxygenToolkit_authorName = "pipl"
+nmap <Leader>ch :DoxAuthor<CR>
+nmap <Leader>cf :Dox<CR>
+nmap <Leader>cl :DoxLic<CR>
+nmap <Leader>cb :DoxBlock<CR>
