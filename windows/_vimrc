@@ -78,6 +78,9 @@ set wildmenu
 
 call plug#begin('~/.vim/plugged')
 Plug 'neoclide/coc.nvim', {'branch': 'release'} 
+Plug 'altercation/vim-colors-solarized'
+Plug 'tomasr/molokai'
+Plug 'vim-scripts/phd'
 Plug 'Lokaltog/vim-powerline'
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'nathanaelkane/vim-indent-guides'
@@ -89,7 +92,6 @@ Plug 'vim-scripts/indexer.tar.gz'
 Plug 'vim-scripts/DfrankUtil'
 Plug 'vim-scripts/vimprj'
 Plug 'dyng/ctrlsf.vim'
-Plug 'kien/ctrlp.vim'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'scrooloose/nerdcommenter'
 Plug 'vim-scripts/DrawIt'
@@ -104,10 +106,17 @@ Plug 'Lokaltog/vim-easymotion'
 "Plug 'suan/vim-instant-markdown'
 Plug 'lilydjwg/fcitx.vim'
 "Plug 'othree/xml.vim'
+Plug 'Yggdroot/LeaderF', { 'do': '.\install.bat' }
 call plug#end()
 
 " >>
 " 营造专注气氛
+
+" 配色方案
+set background=dark
+"colorscheme solarized
+colorscheme molokai
+"colorscheme phd
 
 " 禁止光标闪烁
 set gcr=a:block-blinkon0
@@ -161,7 +170,8 @@ set hlsearch
 " 其他美化
 
 " 设置 gvim 显示字体
-set guifont=YaHei\ Consolas\ Hybrid\ 10.5
+"set guifont=YaHei\ Consolas\ Hybrid\ 10.5
+set guifont=Cascadia_Code_PL:h11
 
 " 禁止折行
 set nowrap
@@ -484,14 +494,10 @@ let g:wildfire_objects = ["i'", 'i"', "i)", "i]", "i}", "i>", "ip"]
 " 调用 gundo 树
 nnoremap <Leader>ud :GundoToggle<CR>
 
-" ctrlp 配置
-let g:ctrlp_user_command = 'dir %s /-n /b /s /a-d'
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
-  \ 'file': '\v\.(exe|so|dll|obj)$',
-  \ 'link': 'some_bad_symbolic_links',
-  \ }
-set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe,*obj
+"<< LeaderF 配置
+
+"打开快捷键
+let g:Lf_ShortcutF = '<C-P>'
 
 " << Coc 插件配置
 
@@ -500,3 +506,8 @@ nmap <silent>gd <Plug>(coc-definition)
 nmap <silent>gy <Plug>(coc-type-definition)
 nmap <silent>gi <Plug>(coc-implementation)
 nmap <silent>gr <Plug>(coc-references)
+nmap <leader>rn <Plug>(coc_rename)
+xmap <leader>f <Plug>(coc-format-selected)
+nmap <leader>f <Plug>(coc-format-selected)
+
+
