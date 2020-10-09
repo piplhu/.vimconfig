@@ -85,6 +85,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'altercation/vim-colors-solarized'
 Plug 'tomasr/molokai'
 Plug 'vim-scripts/phd'
+Plug 'morhetz/gruvbox'
 Plug 'vim-scripts/DoxygenToolkit.vim' 
 Plug 'Lokaltog/vim-powerline'
 Plug 'octol/vim-cpp-enhanced-highlight'
@@ -101,6 +102,7 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'scrooloose/nerdcommenter'
 Plug 'vim-scripts/DrawIt'
 Plug 'SirVer/ultisnips'
+Plug 'piplhu/vim-snippets'
 Plug 'derekwyatt/vim-protodef'
 Plug 'scrooloose/nerdtree'
 Plug 'fholgado/minibufexpl.vim'
@@ -117,10 +119,11 @@ call plug#end()
 " <<<<
 
 " 配色方案
-"set background=dark
+set background=dark
 "colorscheme solarized
-colorscheme molokai
+"colorscheme molokai
 "colorscheme phd
+colorscheme gruvbox
 
 " >>
 " 营造专注气氛
@@ -393,10 +396,10 @@ nnoremap <Leader>rwc :call Replace(1, 1, input('Replace '.expand('<cword>').' wi
 
 " 模板补全
 " UltiSnips 的 tab 键与 YCM 冲突，重新设定
-let g:UltiSnipsSnippetDirectories=["mysnippets"]
-let g:UltiSnipsExpandTrigger="<leader><tab>"
-let g:UltiSnipsJumpForwardTrigger="<leader><tab>"
-let g:UltiSnipsJumpBackwardTrigger="<leader><s-tab>"
+"let g:UltiSnipsSnippetDirectories=["mysnippets"]
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " >>
 " YCM 补全
@@ -539,7 +542,7 @@ function! Formatonsave()
       let l:formatdiff = 1
         py3f ~/clang-format.py
     endfunction
-    autocmd BufWritePre *.h,*.cc,*.cpp call Formatonsave()
+    autocmd BufWritePre *.h,*.cc,*.cpp,*.c call Formatonsave()
 
 " leaderf插件配置
 let g:Lf_ShortcutF ='<C-P>'
