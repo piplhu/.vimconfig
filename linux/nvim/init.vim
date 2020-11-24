@@ -136,6 +136,8 @@ Plug 'junegunn/fzf.vim'
 Plug 'liuchengxu/vista.vim'
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 call plug#end()
 
 colorscheme dracula
@@ -224,15 +226,7 @@ let g:Lf_UseCache = 0
 " ===
 " === FZF
 " ===
-set rtp+=/usr/local/opt/fzf
-set rtp+=/home/linuxbrew/.linuxbrew/opt/fzf
-set rtp+=/home/david/.linuxbrew/opt/fzf
 noremap <c-p> :Leaderf file<CR>
-noremap <silent> <C-f> :Rg<CR>
-noremap <silent> <C-h> :History<CR>
-noremap <silent> <C-l> :Lines<CR>
-noremap <silent> <C-w> :Buffers<CR>
-noremap <leader>; :History:<CR>
 
 let g:fzf_preview_window = 'right:60%'
 let g:fzf_cogits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
@@ -333,3 +327,27 @@ function! s:defx_my_settings() abort
 	  \ defx#do_action('change_vim_cwd')
 endfunction
 autocmd BufWritePost * call defx#redraw()
+
+" ===
+" === vim-airline
+" ===
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#tab_nr_type = 0 " # of splits (default)
+let g:airline#extensions#tabline#tab_nr_type = 1 " tab number
+let g:airline#extensions#tabline#tab_nr_type = 2 " splits and tab number
+let g:airline#extensions#tabline#tabnr_formatter = 'tabnr'
+let g:airline#extensions#tabline#show_tab_nr = 1
+let g:airline#extensions#tabline#buffer_idx_mode = 1
+nmap <leader>1 <Plug>AirlineSelectTab1
+nmap <leader>2 <Plug>AirlineSelectTab2
+nmap <leader>3 <Plug>AirlineSelectTab3
+nmap <leader>4 <Plug>AirlineSelectTab4
+nmap <leader>5 <Plug>AirlineSelectTab5
+nmap <leader>6 <Plug>AirlineSelectTab6
+nmap <leader>7 <Plug>AirlineSelectTab7
+nmap <leader>8 <Plug>AirlineSelectTab8
+nmap <leader>9 <Plug>AirlineSelectTab9
+nmap <leader>- <Plug>AirlineSelectPrevTab
+nmap <leader>+ <Plug>AirlineSelectNextTab
+
+
