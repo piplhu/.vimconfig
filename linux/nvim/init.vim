@@ -256,7 +256,7 @@ let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.8 } }
 " ===
 " === defx
 " ===
-nnoremap <F3> :Defx -toggle -auto-cd -split=vertical -winwidth=30 -direction=topleft<CR> 
+nnoremap <F3> :Defx -toggle -auto-cd -split=vertical -winwidth=30 -direction=botright<CR> 
 autocmd FileType defx call s:defx_my_settings()
 function! s:defx_my_settings() abort
 	  " Define mappings
