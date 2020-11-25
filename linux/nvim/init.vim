@@ -256,7 +256,7 @@ let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.8 } }
 " ===
 " === defx
 " ===
-nnoremap <LEADER>fl :Defx -toggle -auto-cd -split=vertical -winwidth=30 -direction=topleft<CR> 
+nnoremap <F3> :Defx -toggle -auto-cd -split=vertical -winwidth=30 -direction=topleft<CR> 
 autocmd FileType defx call s:defx_my_settings()
 function! s:defx_my_settings() abort
 	  " Define mappings
@@ -327,6 +327,43 @@ function! s:defx_my_settings() abort
 	  \ defx#do_action('change_vim_cwd')
 endfunction
 autocmd BufWritePost * call defx#redraw()
+
+function! s:open_defx_if_directory()
+	try
+		let l:full_path = expand(expand('%:p'))
+	catch
+		return
+	endtry
+	if isdirectory(l:full_path)
+		execute "Defx `expand('%:p')` | bd " . expand('%:r')
+	endif
+endfunction
+
+augroup defx_config
+	autocmd!
+	autocmd FileType defx call s:defx_my_settings()
+	autocmd BufEnter * call s:open_defx_if_directory()
+augroup END
+
+" ===
+" " === Vista.vim
+" " ===
+ nnoremap  <F2>  :Vista!!<CR>
+ noremap <c-t> :silent! Vista finder coc<CR>
+ let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
+ let g:vista_default_executive = 'coc'
+ let g:vista_fzf_preview = ['right:50%']
+ let g:vista#renderer#enable_icon = 1
+ let g:vista#renderer#icons = {
+ \   "function": "\uf794",
+ \   "variable": "\uf71b",
+ \  }
+
+let g:vista_close_on_jump = 1
+let g:vista_sidebar_position = "vertical topleft"
+let g:scrollstatus_size = 15
+
+
 
 " ===
 " === vim-airline
