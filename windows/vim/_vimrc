@@ -1,6 +1,5 @@
 set number
 let mapleader="\<space>"
-set encoding=utf-8
 set relativenumber
 set cursorline
 set hidden
@@ -32,7 +31,6 @@ nmap <Leader>q :q<CR>
 " 定义快捷键保存当前窗口内容
 nmap <Leader>w :w<CR>
 
-set encoding=utf-8
 " 设置快捷键遍历子窗口
 " 依次遍历
 nnoremap nw <C-W><C-W>
@@ -89,6 +87,10 @@ let g:neoterm_autoscroll = 1
 " 退回到普通模式
 tnoremap <Esc> <C-\><C-N>
 
+" 解决中文乱码
+set fileencodings=utf-8,chinese,gbk,gb18030,gk2312,latin-1
+set encoding=utf-8
+
 call plug#begin('~/.vim/plugged')
 Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
 Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
@@ -101,10 +103,12 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'kaicataldo/material.vim', { 'branch': 'main' }
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'junegunn/fzf.vim'
+Plug 'mileszs/ack.vim'
 call plug#end()
 
 colorscheme dracula
 
+nnoremap <LEADER>sp :Ack!<Space>
 " coc.nvim
 let g:coc_global_extensions = [
 	\ 'coc-vimlsp',
