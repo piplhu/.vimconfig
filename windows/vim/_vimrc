@@ -100,21 +100,18 @@ Plug 'liuchengxu/vista.vim'
 Plug 'roxma/vim-hug-neovim-rpc'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'kaicataldo/material.vim', { 'branch': 'main' }
 Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'mileszs/ack.vim'
 call plug#end()
 
 colorscheme dracula
 
-nnoremap <LEADER>sp :Ack!<Space>
 " coc.nvim
 let g:coc_global_extensions = [
 	\ 'coc-vimlsp',
 	\ 'coc-clangd',
-	\ 'coc-gitignore',
-	\ 'coc-explorer']
+	\ 'coc-gitignore']
 
 inoremap <silent><expr> <TAB>
     \ pumvisible() ? "\<C-n>" :
@@ -204,7 +201,7 @@ let g:Lf_UseCache = 0
 "noremap <silent> <C-w> :Buffers<CR>
 "noremap <leader>; :History:<CR>
 
-let g:fzf_preview_window = 'right:60%'
+let g:fzf_preview_window = 'down:30%:hidden'
 let g:fzf_cogits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
 
 function! s:list_buffers()
@@ -218,17 +215,19 @@ function! s:delete_buffers(lines)
  execute 'bwipeout' join(map(a:lines, {_, line -> split(line)[0]}))
 endfunction
 
-command! BD call fzf#run(fzf#wrap({
+" 选择删除buffer
+command! BufferDelete call fzf#run(fzf#wrap({
  \ 'source': s:list_buffers(),
  \ 'sink*': { lines -> s:delete_buffers(lines) },
- \ 'options': '--multi --reverse --bind ctrl-a:select-all+accept'
+ \ 'options': '--multi --reverse --bind ctrl-a:select-all+accept',
+ \   'down': '40%'
  \}))
-
-noremap <c-d> :BD<CR>
+ 
+nnoremap <LEADER>sp :Rg!<Space>
+noremap <c-d> :BufferDelete<CR>
 
 let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.8 } }
-
-
+let g:fzf_layout = {'down': '40%' }
 " ===
 " === defx
 " ===
