@@ -1,3 +1,7 @@
+if !isdirectory(expand("$HOME/.vimconfig/plugged"))
+    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
 set number
 let mapleader="\<space>"
 set relativenumber
@@ -120,8 +124,12 @@ Plug 'liuchengxu/vista.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'dracula/vim', { 'as': 'dracula' }
+
+if !executable('fzf')
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+endif
 Plug 'junegunn/fzf.vim'
+
 if has('nvim')
 Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
 else
