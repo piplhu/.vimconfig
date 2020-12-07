@@ -7,10 +7,10 @@ set guifont=Source_Code_Pro_For_Powerline:h11:b:cMAC:qDRAFT
 set hlsearch
 set updatetime=100
 
-if !filereadable(expand("$HOME/.vimconfig/tmp/backup"))
+if !isdirectory(expand("$HOME/.vimconfig/tmp/backup"))
 call mkdir($HOME . "/.vimconfig/tmp/backup", 'p')
 endif
-if !filereadable(expand("$HOME/.vimconfig/tmp/undo"))
+if !isdirectory(expand("$HOME/.vimconfig/tmp/undo"))
 call mkdir($HOME . "/.vimconfig/tmp/undo", 'p')
 endif
 set backupdir=~/.vimconfig/tmp/backup
