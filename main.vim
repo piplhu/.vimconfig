@@ -7,6 +7,19 @@ set guifont=Source_Code_Pro_For_Powerline:h11:b:cMAC:qDRAFT
 set hlsearch
 set updatetime=100
 
+if has('vim')
+    set directory =~\\.vim\\tmp 
+elseif has('nvim')
+    silent !mkdir -p ~/.config/nvim/tmp/backup
+    silent !mkdir -p ~/.config/nvim/tmp/undo
+    set backupdir=~/.config/nvim/tmp/backup,.
+    set directory=~/.config/nvim/tmp/backup,.
+    if has('persistent_undo')
+        set undofile
+        set undodir=~/.config/nvim/tmp/undo,.
+    endif
+endif
+
 " 开启文件类型侦测
 filetype on
 " >>
@@ -100,19 +113,24 @@ set shiftwidth=4
 " 让 vim 把连续数量的空格视为一个制表符
 set softtabstop=4
 
-call plug#begin('~/.vim/plugged')
-Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
+call plug#begin('~/.vimconfig/plugged')
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
-Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'roxma/nvim-yarp'
 Plug 'liuchengxu/vista.vim'
-Plug 'roxma/vim-hug-neovim-rpc'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+if has('nvim')
+Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+Plug 'Shougo/defx.nvim'
+Plug 'roxma/nvim-yarp'
+Plug 'roxma/vim-hug-neovim-rpc'
+endif
 call plug#end()
+
 
 colorscheme dracula
 
