@@ -7,17 +7,17 @@ set guifont=Source_Code_Pro_For_Powerline:h11:b:cMAC:qDRAFT
 set hlsearch
 set updatetime=100
 
-if has('vim')
-    set directory =~\\.vim\\tmp 
-elseif has('nvim')
-    silent !mkdir -p ~/.config/nvim/tmp/backup
-    silent !mkdir -p ~/.config/nvim/tmp/undo
-    set backupdir=~/.config/nvim/tmp/backup
-    set directory=~/.config/nvim/tmp/backup
-    if has('persistent_undo')
-        set undofile
-        set undodir=~/.config/nvim/tmp/undo
-    endif
+if !filereadable(expand("$HOME/.vimconfig/tmp/backup"))
+call mkdir($HOME . "/.vimconfig/tmp/backup", 'p')
+endif
+if !filereadable(expand("$HOME/.vimconfig/tmp/undo"))
+call mkdir($HOME . "/.vimconfig/tmp/undo", 'p')
+endif
+set backupdir=~/.vimconfig/tmp/backup
+set directory=~/.vimconfig/tmp/backup
+if has('persistent_undo')
+    set undofile
+    set undodir=~/.config/nvim/tmp/undo
 endif
 
 " 开启文件类型侦测
