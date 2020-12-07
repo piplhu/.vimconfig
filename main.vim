@@ -12,11 +12,11 @@ if has('vim')
 elseif has('nvim')
     silent !mkdir -p ~/.config/nvim/tmp/backup
     silent !mkdir -p ~/.config/nvim/tmp/undo
-    set backupdir=~/.config/nvim/tmp/backup,.
-    set directory=~/.config/nvim/tmp/backup,.
+    set backupdir=~/.config/nvim/tmp/backup
+    set directory=~/.config/nvim/tmp/backup
     if has('persistent_undo')
         set undofile
-        set undodir=~/.config/nvim/tmp/undo,.
+        set undodir=~/.config/nvim/tmp/undo
     endif
 endif
 
