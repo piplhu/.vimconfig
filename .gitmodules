@@ -1,3 +1,0 @@
-[submodule "vim-snippets"]
-	path = vim-snippets
-	url = https://github.com/piplhu/vim-snippets.git
