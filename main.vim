@@ -124,6 +124,7 @@ Plug 'liuchengxu/vista.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'piplhu/vim-snippets'
 
 if !executable('fzf')
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -146,7 +147,8 @@ colorscheme dracula
 let g:coc_global_extensions = [
 	\ 'coc-vimlsp',
 	\ 'coc-clangd',
-	\ 'coc-gitignore']
+	\ 'coc-gitignore',
+    \ 'coc-snippets']
 
 inoremap <silent><expr> <TAB>
     \ pumvisible() ? "\<C-n>" :
@@ -198,7 +200,11 @@ endfunction
 xmap <silent> <leader>a :<C-u>execute 'CocCommand actions.open ' . visualmode()<CR>
 nmap <silent> <leader>a :<C-u>set operatorfunc=<SID>cocActionsOpenFromSelected<CR>g@
 
-
+" coc_snippets
+" ====
+" 标签跳转
+let g:coc_snippets_next = '<c-j>'
+let g:coc_snippets_prev = 'c-k'
 
 " ===
 " === Leaderf
