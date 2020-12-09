@@ -126,9 +126,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'piplhu/vim-snippets'
 
-if !executable('fzf')
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-endif
 Plug 'junegunn/fzf.vim'
 
 if has('nvim')
