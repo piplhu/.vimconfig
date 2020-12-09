@@ -1,5 +1,5 @@
 {
     "snippets.ultisnips.directories":[
-        "$HOME/.vimconfig/plugged/UltiSnips/"
+        "$HOME/.vimconfig/plugged/vim-snippets/UltiSnips"
     ]
 }
