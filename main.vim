@@ -139,6 +139,10 @@ endif
 call plug#end()
 
 
+if(has("termguicolors"))
+    set termguicolors
+endif
+set background=dark
 colorscheme dracula
 
 " coc.nvim
