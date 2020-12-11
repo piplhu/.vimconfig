@@ -60,9 +60,6 @@ nnoremap <Leader>kw <C-W>k
 " 跳转至下方的子窗口
 nnoremap <Leader>jw <C-W>j
 
-" 配置实时生效
-let $vimmainrc = expand('%:p')
-autocmd BufWritePost $vimmainrc source $vimmainrc
 
 " >>
 " 其他
