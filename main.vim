@@ -60,10 +60,6 @@ nnoremap <Leader>kw <C-W>k
 " 跳转至下方的子窗口
 nnoremap <Leader>jw <C-W>j
 
-" <<
-
-" 让配置变更立即生效
-autocmd BufWritePost $MYVIMRC source $MYVIMRC
 
 " >>
 " 其他
@@ -172,6 +168,7 @@ Plug 'piplhu/vim-snippets'
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'terryma/vim-multiple-cursors'
 
 if has('nvim')
 Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
