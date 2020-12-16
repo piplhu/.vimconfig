@@ -7,7 +7,7 @@ let mapleader="\<space>"
 set relativenumber
 set cursorline
 set hidden
-set guifont=Source_Code_Pro_For_Powerline:h13:b:cMAC:qDRAFT
+set guifont=Source_Code_Pro_For_Powerline:h10:b:cMAC:qDRAFT
 set hlsearch
 set updatetime=100
 
@@ -169,6 +169,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'terryma/vim-multiple-cursors'
+Plug 'vim-scripts/a.vim'
 
 if has('nvim')
 Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
