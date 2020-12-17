@@ -309,6 +309,7 @@ command! BufferDelete call fzf#run(fzf#wrap({
  \}))
  
 nnoremap <LEADER>sp :Rg!<Space>
+nnoremap <LEADER>sf :BTags<CR>
 noremap <c-d> :BufferDelete<CR>
 
 let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.8 } }
