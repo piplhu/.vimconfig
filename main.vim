@@ -79,6 +79,8 @@ set backspace=indent,eol,start
 " vim 自身命令行模式智能补全
 set wildmenu
 
+" 关闭搜索高亮
+noremap <LEADER><CR> :nohlsearch<CR>
 
 " 禁止光标闪烁
 set gcr=a:block-blinkon0
