@@ -484,3 +484,7 @@ nmap <leader>8 <Plug>AirlineSelectTab8
 nmap <leader>9 <Plug>AirlineSelectTab9
 nmap <leader>- <Plug>AirlineSelectPrevTab
 
+" ClangFormat
+map <leader>f :pyf ~/.vimconfig/clang-format.py<cr>
+imap <C-K> <c-f>:pyf ~/.vimconfig/clang-format.py<cr>
+
