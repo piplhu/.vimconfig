@@ -194,6 +194,7 @@ let g:coc_global_extensions = [
 	\ 'coc-vimlsp',
 	\ 'coc-clangd',
 	\ 'coc-gitignore',
+	\ 'coc-rls',
     \ 'coc-snippets']
 
 inoremap <silent><expr> <TAB>
@@ -245,6 +246,7 @@ function! s:cocActionsOpenFromSelected(type) abort
 endfunction
 xmap <silent> <leader>a :<C-u>execute 'CocCommand actions.open ' . visualmode()<CR>
 nmap <silent> <leader>a :<C-u>set operatorfunc=<SID>cocActionsOpenFromSelected<CR>g@
+command! -nargs=0 Format :call CocAction('format')
 
 " coc_snippets
 " ====
@@ -487,4 +489,3 @@ nmap <leader>- <Plug>AirlineSelectPrevTab
 " ClangFormat
 map <leader>f :py3f ~/.vimconfig/clang-format.py<cr>
 imap <C-K> <c-f>:py3f ~/.vimconfig/clang-format.py<cr>
-
