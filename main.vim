@@ -195,6 +195,7 @@ let g:coc_global_extensions = [
 	\ 'coc-clangd',
 	\ 'coc-gitignore',
 	\ 'coc-rls',
+	\ 'coc-rust-analyzer',
     \ 'coc-snippets']
 
 inoremap <silent><expr> <TAB>
