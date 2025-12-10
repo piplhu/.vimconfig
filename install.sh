@@ -58,28 +58,42 @@ install_neovim () {
 }
 
 
+#配置IDEA .ideavimrc
+install_ideavimrc () {
+    if [[ -f "$HOME/.ideavimrc" ]]; then
+        if [[ "$(readlink $HOME/.ideavimrc)" =~ \.vimconfig/\ideavimrc$ ]]; then
+            success "Installed .ideavimrc for IDEA"
+        else
+            mv "$HOME/.ideavimrc" "$HOME/.ideavimrc_back"
+            success "Backup $HOME/.ideavimrc to $HOME/.ideavimrc_back"
+            ln -s "$HOME/.vimconfig/ideavimrc" "$HOME/.ideavimrc"
+            success "Installed .ideavimrc for IDEA"
+        fi
+    else
+        ln -s "$HOME/.vimconfig/ideavimrc" "$HOME/.ideavimrc"
+        success "Installed .ideavimrc for IDEA"
+    fi
+}
+
 main(){
 	if hash "vim" &>/dev/null; then
         is_vim8=$(vim --version | grep "Vi IMproved 8")
         is_vim74=$(vim --version | grep "Vi IMproved 7.4")
         if [ -n "$is_vim8" ]; then
             success "Check Requirements: vim 8.0"
-						install_vim
+			install_vim
         else
             warn "myconfig need vim 8.0 or above"
         fi
-        if hash "nvim" &>/dev/null; then
-            success "Check Requirements: nvim"
-						install_neovim
-        fi
-	else
-        if hash "nvim" &>/dev/null; then
-            success "Check Requirements: nvim"
-						install_neovim
-        else
-            warn "Check Requirements : vim or nvim"
-        fi
     fi
+    
+    if hash "nvim" &>/dev/null; then
+        success "Check Requirements: nvim"
+		install_neovim
+    fi
+    
+    # 安装 .ideavimrc 配置
+    install_ideavimrc
 
 }
 

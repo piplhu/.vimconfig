@@ -1,0 +1,80 @@
+" .ideavimrc is a configuration file for IdeaVim plugin. It uses
+"   the same commands as the original .vimrc configuration.
+" You can find a list of commands here: https://jb.gg/h38q75
+" Find more examples here: https://jb.gg/share-ideavimrc
+
+
+"" -- Suggested options --
+" Show a few lines of context around the cursor. Note that this makes the
+" text scroll if you mouse-click near the start or end of the window.
+set scrolloff=5
+
+" Do incremental searching.
+set incsearch
+
+" Don't use Ex mode, use Q for formatting.
+map Q gq
+
+" --- Enable IdeaVim plugins https://jb.gg/ideavim-plugins
+
+" Highlight copied text
+Plug 'machakann/vim-highlightedyank'
+" Commentary plugin
+Plug 'tpope/vim-commentary'
+
+"--将<leader>设置为 空格 键
+let mapleader = ' '
+" -- 共享剪贴板(共享之后普通的复制也会进入系统剪贴板)
+"set clipboard^=unnamed,unnamedplus
+"========== p ==========
+"从剪切板粘贴到下面行
+let g:WhichKeyDesc_PasteClipboardDown = "<leader>p PasteClipboardDown"
+nmap <leader>p "+p
+"从剪切板粘贴到上面行
+let g:WhichKeyDesc_PasteClipboardUp = "<leader>P PasteClipboardUp"
+nmap <leader>P "+P
+"在可视模式中：从剪切板粘贴到下面行
+let g:WhichKeyDesc_PasteClipboardDown = "<leader>p PasteClipboardDown"
+vmap <leader>p "+p
+"在可视模式中：从剪切板粘贴到上面行
+let g:WhichKeyDesc_PasteClipboardUp = "<leader>P PasteClipboardUp"
+vmap <leader>P "+P
+
+"========== y ==========
+"将 "+ 简化为 <leader>
+let g:WhichKeyDesc_CopyClipboard = "<leader>y CopyClipboard"
+vmap <leader>y "+y
+"将 "+ 简化为 <leader>
+let g:WhichKeyDesc_CopyClipboard= "<leader>y CopyClipboard"
+nmap <leader>y "+yy
+
+if &ide =~? 'clion'
+    " ========== clion的配置 ==========
+
+    " 查找引用 <alt+F7>
+    nmap gr :action FindUsages<CR>
+
+    " 查找声明 <ctrl+B>
+    nmap gd :action GotoDeclaration<CR>
+
+    " 查找定义 <ctrl+alt+B>
+    nmap gD :action GotoImplementation<CR>
+
+    " 重构 <crtl+alt+shift+T>
+    nmap <leader>r :action Refactorings.QuickListPopupAction<CR>
+
+
+    "快速 导航/查找 项目中的其他文件(Ctrl + n)
+    let g:WhichKeyDesc_FindOrFormat_FindFile = "<leader>ff FindFile"
+    nmap <leader>ff <action>(GotoFile)
+
+    " 选择运行和调试配置
+    nmap lb :action RunConfiguration<CR>
+
+    " 构建 <crtl+F9>
+    nmap bd :action Build<CR>
+elseif &ide =~? 'pycharm'
+    " PyCharm specific mappings and options
+endif
+
+

@@ -84,5 +84,14 @@ if (!(Test-Path "$HOME\AppData\Local\nvim")) {
   sleep 1
 }
 
+if (!(Test-Path "$HOME\.ideavimrc")) {
+  cmd /c mklink "$HOME\.ideavimrc" $repo_path\ideavimrc
+  echo "[OK] 已为 IDEA 安装"
+  sleep 1
+} else {
+  echo "[OK] $HOME\.ideavimrc 已存在"
+  sleep 1
+}
+
 Pause
 
